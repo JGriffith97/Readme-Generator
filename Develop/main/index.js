@@ -6,6 +6,11 @@ const fs = require('fs')
 const questions = [
   {
     type: 'input',
+    name: 'fileName',
+    message: 'What would you like to name the README?'
+  },
+  {
+    type: 'input',
     name: 'name',
     message: 'What is your name?'
   },
@@ -28,7 +33,7 @@ const questions = [
 
 // TODO: Create a function to write README file
 // Append? or Write file?
-function writeToFile(fileName, data) {
+function writeToFile({fileName, name, email, github, linkedIn}) {
 
 }
 
@@ -43,9 +48,10 @@ init();
 //----------------------------------------------------------------------------------
 
 
-module.exports = {
-  questions
-}
+// Not sure if I'll need this yet.
+// module.exports = {
+//   questions
+// }
 
 
 
