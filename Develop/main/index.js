@@ -1,13 +1,14 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer')
-const fs = require('fs')
-
+const fs = require('fs');
+// const generateMarkdown = require('../utils/generateMarkdown');
 // TODO: Create an array of questions for user input
+
 const questions = [
   {
     type: 'input',
     name: 'fileName',
-    message: 'What would you like to name the README?'
+    message: 'What would you like to name the README? (Caps sensitive)'
   },
   {
     type: 'input',
@@ -26,6 +27,11 @@ const questions = [
   },
   {
     type: 'input',
+    name: 'githubUrl',
+    message: 'What is your GitHub URL?'
+  },
+  {
+    type: 'input',
     name: 'linkedIn',
     message: 'What is your LinkedIn URL?',
   },  
@@ -33,37 +39,33 @@ const questions = [
 
 // TODO: Create a function to write README file
 // Append? or Write file?
-const writeToFile = ({fileName, name, email, github, linkedIn}) => 
-`# This is a Weather Dashboard for the Module 6 Challenge of the UofU Coding Bootcamp.
+const generateMarkdown = ({fileName, name, email, github, githubUrl, linkedIn}) =>
 
-## The goal of this assignment was to build a weather app utilizing the OpenWeatherMap API to make multiple fetch calls to display information to the DOM. This was completed using HTML, JavaScript, jQuery, Moment.js, and Bootstrap.
+`# ${fileName}
 
-Screenshot: ![Site Screenshot](./Screenshot/Weather%20Dashboard%20Screenshot.jpeg)
+## Created by ${name}, GitHub: [${github}](${githubUrl})
 
->**Open Code Files:**
->
->HTML: [HTML](./index.html)
->
->CSS: [CSS](./Assets/css/style.css)
->
->Script: [Script](./Assets/js/script.js)
-
-Live Site: Wait`;
+Contact at: [${email}](mailto:griffithjayden97@outlook.com)
+LinkedIn: [Jayden Griffith](${linkedIn})`;
 
 inquirer
   .prompt(questions)
     .then((answers) => {
-      
+      const markdownFileContent = generateMarkdown(answers);
+
+      fs.writeFile('README.md', markdownFileContent, (err) =>
+        err ? console.log(err) : console.log('Created README.md')
+      )
     })
 
 
 // TODO: Create a function to initialize app
-function init() {
+// function init() {
   
-}
+// }
 
 // Function call to initialize app
-init();
+// init();
 
 //----------------------------------------------------------------------------------
 
