@@ -50,20 +50,75 @@ function doPrompt() {
   inquirer
   .prompt(questions)
     .then((answers) => {
-      const markdownFileContent = generateMarkdownFile(answers);
+      generateMarkdownFile(answers);
   })
 }
 const generateMarkdownFile = ({fileName, name, email, github, githubUrl, linkedIn}) => {
 
 const data = `# ${fileName}
 
-## Created by ${name}, GitHub: [${github}](${githubUrl})
+<br/>
 
-Contact at: [${email}](mailto:griffithjayden97@outlook.com)
-LinkedIn: [Jayden Griffith](${linkedIn})`;
+# Table of Contents
+
+* [Description](#description)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Contributing](#contributing)
+* [Tests](#tests)
+* [Questions](#questions)
+* [License](#license)
+
+<br/>
+
+## Description
+
+${description}
+
+---
+## Installation
+
+${installation}
+
+---
+## Usage
+
+${usage}
+
+---
+## Contributing
+
+${contributing}
+
+---
+## Tests
+
+${tests}
+
+---
+## Questions
+
+${faq}
+
+---
+## License
+
+${license}
+
+---
+<br/>
+
+Created by ${name} -- @GitHub: [${github}](${githubUrl})
+
+Contact at: [${email}](mailto:${email}) -- & LinkedIn: [${name}](${linkedIn})`;
 
 console.log(data)
+
+fs.writeFile("README.md", data, (err) =>
+err ? console.log(err) : console.log('Created README.md'))
 }
 
+
+// ---------------------------------------------------------------------------------
 
 module.exports = doPrompt;
