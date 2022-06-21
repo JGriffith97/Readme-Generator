@@ -36,24 +36,29 @@ const questions = [
   {
     // Editor opens a text editor, usually Notepad, to write in, as opposed to the command line
     // Save, then exit the text editor to use your input.
-    type: 'editor',
+    type: 'input',
     name: 'description',
     message: 'Please enter a short description of your project.',
   },
   {
-    type: 'editor',
+    type: 'input',
     name: 'installation',
     message: 'Please enter a text tutorial on how to install your project.',
   },
   {
-    type: 'editor',
+    type: 'input',
     name: 'usage',
     message: 'Describe how a user may use your project.',
   },
   { 
-    type: 'editor',
+    type: 'input',
     name: 'contributing',
-    message: 'Explain how others may help contribute to your project.'
+    message: 'Explain how others may help contribute to your project.',
+  },
+  {
+    type: 'confirm',
+    name: 'license',
+    message: 'Include license?',
   },
 ];
 
@@ -80,10 +85,15 @@ function doPrompt() {
   inquirer
   .prompt(questions)
     .then((answers) => {
-      generateMarkdownFile(answers);
+      if (license.answers === true) {
+        licenseConfirmed = ``
+      };
+      generateMarkdownFile(answers)
   })
 }
-const generateMarkdownFile = ({fileName, name, email, github, githubUrl, linkedIn, description, installation, usage, contributing}) => {
+
+
+const generateMarkdownFile = ({fileName, name, email, github, githubUrl, linkedIn, description, installation, usage, contributing, licenseConfirmed}) => {
 
 // The content of the README in template literals, formatted in markdown, using the answers to the prompts specified in the Inquirer module.
 const data = `# ${fileName}
@@ -132,11 +142,7 @@ ${contributing}
 -Questions Placeholder-
 
 ---
-## License
-
-
-
----
+${licenseConfirmed}
 <br/>
 
 Created by ${name} -- @GitHub: [${github}](${githubUrl})
