@@ -31,7 +31,27 @@ const questions = [
     type: 'input',
     name: 'linkedIn',
     message: 'What is your LinkedIn URL?',
-  },  
+  },
+  {
+    type: 'editor',
+    name: 'description',
+    message: 'Please enter a short description of your project.',
+  },
+  {
+    type: 'editor',
+    name: 'installation',
+    message: 'Please enter a text tutorial on how to install your project.',
+  },
+  {
+    type: 'editor',
+    name: 'usage',
+    message: 'Describe how a user may use your project.',
+  },
+  { 
+    type: 'editor',
+    name: 'contributing',
+    message: 'Explain how others may help contribute to your project.'
+  },
 ];
 
 // TODO: Create a function that returns a license badge based on which license is passed in
@@ -53,7 +73,7 @@ function doPrompt() {
       generateMarkdownFile(answers);
   })
 }
-const generateMarkdownFile = ({fileName, name, email, github, githubUrl, linkedIn}) => {
+const generateMarkdownFile = ({fileName, name, email, github, githubUrl, linkedIn, description, installation, usage, contributing}) => {
 
 const data = `# ${fileName}
 
@@ -93,17 +113,11 @@ ${contributing}
 ---
 ## Tests
 
-${tests}
-
 ---
 ## Questions
 
-${faq}
-
 ---
 ## License
-
-${license}
 
 ---
 <br/>
