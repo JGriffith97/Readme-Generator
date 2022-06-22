@@ -1,12 +1,59 @@
 const inquirer = require('inquirer')
 const fs = require('fs');
 
+// [![License: CC0-1.0](https://licensebuttons.net/l/zero/1.0/80x15.png)](http://creativecommons.org/publicdomain/zero/1.0/)
+
+
+const licenses = {
+  MIT: {
+    badge: `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]`,
+    link: `[OpenSource](https://opensource.org/licenses/MIT)`,
+    notice: `MIT License
+
+    Copyright (c) 2022 Jayden Griffith
+    
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+    
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+    
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.`
+  },
+  creativeCommons: {
+    badge: `[![License: CC0-1.0](https://licensebuttons.net/l/zero/1.0/80x15.png)]`,
+    link: `[Creative Commons](http://creativecommons.org/publicdomain/zero/1.0/)`,
+    notice: `CC0 1.0
+
+    The person who associated a work with this deed has dedicated the work to the
+    public domain by waiving all of his or her rights to the work worldwide under
+    copyright law, including all related and neighboring rights, to the extent allowed by law.
+    
+    You can copy, modify, distribute and perform the work, even for commercial purposes, 
+    all without asking permission. See Other Information below.`
+  }
+}
+
+const license = ''
+
+// let shouldRenderLicence = false;
+
 // Array containging objects, each specifying the type, name, and message for each prompt that is passed through Inquirer.
 const questions = [
   {
     type: 'input',
     name: 'fileName',
-    message: 'What would you like to name the README? (Caps sensitive)'
+    message: 'What would you like to name the README? (Caps sensitive)',
   },
   {
     type: 'input',
@@ -56,28 +103,59 @@ const questions = [
     message: 'Explain how others may help contribute to your project.',
   },
   {
-    type: 'confirm',
-    name: 'license',
-    message: 'Include license?',
+    type: 'list',
+    name: 'licenses',
+    message: 'Include license? If so, which one?',
+    choices: ['None', 'MIT','Creative Commons'],
   },
 ];
 
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(license) {
-
+function renderLicenseBadge() {
+  if(license = '') {
+     return null;
+  } else if (license === 'MIT') {
+     return licenses.MIT.badge
+  } else if (license === 'Creative Commons') { 
+     return licenses.creativeCommons.badge
+  }
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {
+function renderLicenseLink() {
+  if(license = '') {
+    return '';
+  } else if (license === 'MIT') {
+     return `${licenses.MIT.link}
 
+     ---
+     `
+  } else if (license === 'Creative Commons') { 
+     return `${licenses.creativeCommons.link}
+
+     ---
+     `
+  }
 }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {
+function renderLicenseSection() {
+  if(license = '') {
+    return '';
+  } else  if (license === 'MIT') {
+    return `## License
+    
+    ${licenses.MIT.notice}`
 
+  } else if (license === 'Creative Commons') {
+    return `## License
+    
+    ${licenses.creativeCommons.notice}`
+
+  }
 }
 
 // Takes the questions array and incorporates it into the inquirer module as prompts.
@@ -85,18 +163,26 @@ function doPrompt() {
   inquirer
   .prompt(questions)
     .then((answers) => {
-      if (license.answers === true) {
-        licenseConfirmed = ``
-      };
-      generateMarkdownFile(answers)
-  })
+      console.log(answers)
+        });
+
+    if (answers.licenses === 'MIT') {
+      license = 'MIT'
+    } else if (answers.licenses === 'Creative Commons') {
+      license = 'Creative Commons'
+    } else {
+      license = ''
+    }
+      
+   generateMarkdownFile(answers)
 }
 
-
-const generateMarkdownFile = ({fileName, name, email, github, githubUrl, linkedIn, description, installation, usage, contributing, licenseConfirmed}) => {
+const generateMarkdownFile = ({fileName, name, email, github, githubUrl, linkedIn, description, installation, usage, contributing}) => {
 
 // The content of the README in template literals, formatted in markdown, using the answers to the prompts specified in the Inquirer module.
 const data = `# ${fileName}
+
+${renderLicenseBadge(badge)}
 
 <br/>
 
@@ -142,7 +228,9 @@ ${contributing}
 -Questions Placeholder-
 
 ---
-${licenseConfirmed}
+${renderLicenseSection()}
+
+${renderLicenseLink()}
 <br/>
 
 Created by ${name} -- @GitHub: [${github}](${githubUrl})
