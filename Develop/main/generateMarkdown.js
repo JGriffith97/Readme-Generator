@@ -44,7 +44,7 @@ const licenses = {
   }
 }
 
-const license = ''
+let license = ''
 
 // let shouldRenderLicence = false;
 
@@ -112,48 +112,54 @@ const questions = [
 
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge() {
+function renderLicenseBadge(badge) {
   if(license = '') {
-     return null;
+     return ``;
   } else if (license === 'MIT') {
-     return licenses.MIT.badge
+     return `${licenses.MIT.badge}`
   } else if (license === 'Creative Commons') { 
-     return licenses.creativeCommons.badge
+     return `${licenses.creativeCommons.badge}`
   }
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink() {
-  if(license = '') {
-    return '';
-  } else if (license === 'MIT') {
-     return `${licenses.MIT.link}
+// function renderLicenseLink() {
+//   if(license = '') {
+//     return '';
+//   } else if (license === 'MIT') {
+//      return `${licenses.MIT.link}
 
-     ---
-     `
-  } else if (license === 'Creative Commons') { 
-     return `${licenses.creativeCommons.link}
+//      ---
+//      `
+//   } else if (license === 'Creative Commons') { 
+//      return `${licenses.creativeCommons.link}
 
-     ---
-     `
-  }
-}
+//      ---
+//      `
+//   }
+// }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection() {
+function renderLicenseSection(section) {
   if(license = '') {
-    return '';
+    return ``;
   } else  if (license === 'MIT') {
     return `## License
     
-    ${licenses.MIT.notice}`
+    ${licenses.MIT.notice}
+    ${licenses.MIT.link}
+    
+    ---`
 
   } else if (license === 'Creative Commons') {
     return `## License
     
-    ${licenses.creativeCommons.notice}`
+    ${licenses.creativeCommons.notice}
+    ${licenses.creativeCommons.link}
+    
+    ---`
 
   }
 }
@@ -164,7 +170,7 @@ function doPrompt() {
   .prompt(questions)
     .then((answers) => {
       console.log(answers)
-        });
+
 
     if (answers.licenses === 'MIT') {
       license = 'MIT'
@@ -174,7 +180,8 @@ function doPrompt() {
       license = ''
     }
       
-   generateMarkdownFile(answers)
+    generateMarkdownFile(answers)
+  });
 }
 
 const generateMarkdownFile = ({fileName, name, email, github, githubUrl, linkedIn, description, installation, usage, contributing}) => {
@@ -228,16 +235,12 @@ ${contributing}
 -Questions Placeholder-
 
 ---
-${renderLicenseSection()}
-
-${renderLicenseLink()}
+${renderLicenseSection(section)}
 <br/>
 
 Created by ${name} -- @GitHub: [${github}](${githubUrl})
 
 Contact at: [${email}](mailto:${email}) -- & LinkedIn: [${name}](${linkedIn})`;
-
-console.log(data)
 
 // Writes the file 'README.md' using the data specified above.
 fs.writeFile("README.md", data, (err) =>

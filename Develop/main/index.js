@@ -12,6 +12,6 @@ initialize();
 
 //----------------------------------------------------------------------------------
 
-// For future reference, just so I can hot-copy/paste
+// For reference, just so I can hot-copy/paste
 // https://www.linkedin.com/in/jayden-griffith-a3b7b9217/
 // https://github.com/JGriffith97
