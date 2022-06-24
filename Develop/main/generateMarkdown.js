@@ -220,15 +220,14 @@ ${contributing}
 ---
 ## Questions
 
--Questions Placeholder-
+Please direct questions to:<br/>
+[${email}](mailto:${email}) and [${github}](${githubUrl}) on GitHub
 
 ---
 ${renderLicenseSection()}
 <br/>
 
-Created by ${name} -- @GitHub: [${github}](${githubUrl})
-
-Contact at: [${email}](mailto:${email}) -- & LinkedIn: [${name}](${linkedIn})`;
+Created by ${name} -- @GitHub: [${github}](${githubUrl}) -- LinkedIn: [${name}](${linkedIn})`;
 
 // Writes the file 'README.md' using the data specified above.
 fs.writeFile("README.md", data, (err) =>
