@@ -47,9 +47,6 @@ all without asking permission. See Other Information below.<br/>`
 }
 
 let license = ''
-let name = ''
-
-// let shouldRenderLicence = false;
 
 // Array containging objects, each specifying the type, name, and message for each prompt that is passed through Inquirer.
 const questions = [
@@ -113,7 +110,6 @@ const questions = [
   },
 ];
 
-// TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 function renderLicenseBadge() {
   console.log('license: ', license)
@@ -127,25 +123,15 @@ function renderLicenseBadge() {
   }
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-// function renderLicenseLink() {
-//   if(license = '') {
-//     return '';
-//   } else if (license === 'MIT') {
-//      return `${licenses.MIT.link}
+// If license is included, adds the link to that section to the Table of Contents.
+function renderLicenseToC() {
+  if (license === '') {
+    return ``;
+  } else {
+    return `* [License](#license)`
+  }
+}
 
-//      ---
-//      `
-//   } else if (license === 'Creative Commons') { 
-//      return `${licenses.creativeCommons.link}
-
-//      ---
-//      `
-//   }
-// }
-
-// TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection() {
   if(license === '') {
@@ -206,7 +192,7 @@ ${renderLicenseBadge()}
 * [Contributing](#contributing)
 * [Tests](#tests)
 * [Questions](#questions)
-* [License](#license)
+${renderLicenseToC()}
 ---
 ## Description
 
