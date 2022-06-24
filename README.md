@@ -74,3 +74,5 @@ SOFTWARE.<br/>
 <br/>
 
 Created by Jayden Griffith -- @GitHub: [JGriffith97](https://github.com/JGriffith97) -- LinkedIn: [Jayden Griffith](https://www.linkedin.com/in/jayden-griffith-a3b7b9217/)
+
+Walkthrough: https://drive.google.com/file/d/1FLZPheFI37AKON_lh5Mu97naoe_jkrnB/view
