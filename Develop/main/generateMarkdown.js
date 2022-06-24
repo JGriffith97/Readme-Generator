@@ -112,8 +112,10 @@ const questions = [
 
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
-function renderLicenseBadge(badge) {
-  if(license = '') {
+function renderLicenseBadge() {
+  console.log('license: ', license)
+  console.log('Licenses: ', licenses)
+  if(license === '') {
      return ``;
   } else if (license === 'MIT') {
      return `${licenses.MIT.badge}`
@@ -142,8 +144,8 @@ function renderLicenseBadge(badge) {
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(section) {
-  if(license = '') {
+function renderLicenseSection() {
+  if(license === '') {
     return ``;
   } else  if (license === 'MIT') {
     return `## License
@@ -169,8 +171,7 @@ function doPrompt() {
   inquirer
   .prompt(questions)
     .then((answers) => {
-      console.log(answers)
-
+      console.log('then')
 
     if (answers.licenses === 'MIT') {
       license = 'MIT'
@@ -189,7 +190,7 @@ const generateMarkdownFile = ({fileName, name, email, github, githubUrl, linkedI
 // The content of the README in template literals, formatted in markdown, using the answers to the prompts specified in the Inquirer module.
 const data = `# ${fileName}
 
-${renderLicenseBadge(badge)}
+${renderLicenseBadge()}
 
 <br/>
 
@@ -235,7 +236,7 @@ ${contributing}
 -Questions Placeholder-
 
 ---
-${renderLicenseSection(section)}
+${renderLicenseSection()}
 <br/>
 
 Created by ${name} -- @GitHub: [${github}](${githubUrl})
