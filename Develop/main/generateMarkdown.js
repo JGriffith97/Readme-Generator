@@ -230,7 +230,7 @@ ${renderLicenseSection()}
 Created by ${name} -- @GitHub: [${github}](${githubUrl}) -- LinkedIn: [${name}](${linkedIn})`;
 
 // Writes the file 'README.md' using the data specified above.
-fs.writeFile("README.md", data, (err) =>
+fs.writeFile("./created/README.md", data, (err) =>
 err ? console.log(err) : console.log('Created README.md'))
 }
 
