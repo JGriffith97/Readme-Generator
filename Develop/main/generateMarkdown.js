@@ -47,6 +47,7 @@ all without asking permission. See Other Information below.<br/>`
 }
 
 let license = ''
+let name = ''
 
 // let shouldRenderLicence = false;
 
@@ -184,7 +185,8 @@ function doPrompt() {
     } else {
       license = ''
     }
-      
+     
+    name = answers.name
     generateMarkdownFile(answers)
   });
 }
