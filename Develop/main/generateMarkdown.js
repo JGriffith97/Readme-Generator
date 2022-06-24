@@ -205,9 +205,7 @@ ${renderLicenseBadge()}
 * [Tests](#tests)
 * [Questions](#questions)
 * [License](#license)
-
-<br/>
-
+---
 ## Description
 
 ${description}
