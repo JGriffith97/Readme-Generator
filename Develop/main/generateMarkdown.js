@@ -126,7 +126,7 @@ function renderLicenseBadge() {
 // If license is included, adds the link to that section to the Table of Contents.
 function renderLicenseToC() {
   if (license === '') {
-    return ``;
+    return ;
   } else {
     return `* [License](#license)`
   }
@@ -172,7 +172,6 @@ function doPrompt() {
       license = ''
     }
      
-    name = answers.name
     generateMarkdownFile(answers)
   });
 }
