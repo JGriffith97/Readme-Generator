@@ -39,7 +39,8 @@ Go to https://github.com/JGriffith97/Readme-Generator and Fork the repository to
 ---
 ## Questions
 
--Questions Placeholder-
+Please direct questions to:<br/>
+[griffithjayden97@outlook.com](mailto:griffithjayden97@outlook.com) and [JGriffith97](https://github.com/JGriffith97) on GitHub
 
 ---
 
@@ -72,6 +73,4 @@ SOFTWARE.<br/>
 ---
 <br/>
 
-Created by Jayden Griffith -- @GitHub: [JGriffith97](https://github.com/JGriffith97)
-
-Contact at: [griffithjayden97@outlook.com](mailto:griffithjayden97@outlook.com) -- & LinkedIn: [Jayden Griffith](https://www.linkedin.com/in/jayden-griffith-a3b7b9217/)
+Created by Jayden Griffith -- @GitHub: [JGriffith97](https://github.com/JGriffith97) -- LinkedIn: [Jayden Griffith](https://www.linkedin.com/in/jayden-griffith-a3b7b9217/)
