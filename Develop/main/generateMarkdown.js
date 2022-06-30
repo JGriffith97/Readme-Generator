@@ -103,6 +103,11 @@ const questions = [
     message: 'Explain how others may help contribute to your project.',
   },
   {
+    type: 'input',
+    name: 'tests',
+    message: "Describe how a user may run tests associated with the application."
+  },
+  {
     type: 'list',
     name: 'licenses',
     message: 'Include license? If so, which one?',
@@ -176,7 +181,7 @@ function doPrompt() {
   });
 }
 
-const generateMarkdownFile = ({fileName, name, email, github, githubUrl, linkedIn, description, installation, usage, contributing}) => {
+const generateMarkdownFile = ({fileName, name, email, github, githubUrl, linkedIn, description, installation, usage, contributing, tests}) => {
 
 // The content of the README in template literals, formatted in markdown, using the answers to the prompts specified in the Inquirer module.
 const data = `# ${fileName}
@@ -215,7 +220,7 @@ ${contributing}
 ---
 ## Tests
 
--Tests Placeholder-
+${tests}
 
 ---
 ## Questions
