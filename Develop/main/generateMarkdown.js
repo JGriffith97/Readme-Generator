@@ -1,4 +1,5 @@
 const inquirer = require('inquirer')
+// fs = file system
 const fs = require('fs');
 
 // [![License: CC0-1.0](https://licensebuttons.net/l/zero/1.0/80x15.png)](http://creativecommons.org/publicdomain/zero/1.0/)
@@ -8,41 +9,43 @@ const licenses = {
   MIT: {
     badge: `![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)`,
     link: `[OpenSource - MIT](https://opensource.org/licenses/MIT)`,
-notice: `
-MIT License
+    notice: `
+        MIT License
 
-Copyright (c) 2022 Jayden Griffith
+        Copyright (c) 2022 Jayden Griffith
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.<br/>`
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.<br/>
+        `
   },
   creativeCommons: {
     badge: `[![License: CC0-1.0](https://licensebuttons.net/l/zero/1.0/80x15.png)]`,
     link: `[Creative Commons](http://creativecommons.org/publicdomain/zero/1.0/)`,
     notice: `
-CC0 1.0
+            CC0 1.0
 
-The person who associated a work with this deed has dedicated the work to the
-public domain by waiving all of his or her rights to the work worldwide under
-copyright law, including all related and neighboring rights, to the extent allowed by law.
+            The person who associated a work with this deed has dedicated the work to the
+            public domain by waiving all of his or her rights to the work worldwide under
+            copyright law, including all related and neighboring rights, to the extent allowed by law.
 
-You can copy, modify, distribute and perform the work, even for commercial purposes, 
-all without asking permission. See Other Information below.<br/>`
+            You can copy, modify, distribute and perform the work, even for commercial purposes, 
+            all without asking permission. See Other Information below.<br/>
+            `
   },
 }
 
@@ -53,7 +56,7 @@ const questions = [
   {
     type: 'input',
     name: 'fileName',
-    message: 'What would you like to name the README? (Caps sensitive)',
+    message: 'What would you like to title the README? (Caps sensitive)',
   },
   {
     type: 'input',
@@ -242,5 +245,5 @@ err ? console.log(err) : console.log('Created README.md'))
 
 // ---------------------------------------------------------------------------------
 
-// Exports the doPrompt function. Which is called from the index via the initialize function which runs generadeMd()
+// Exports the doPrompt function. Which is called from the index via the initialize function which runs generateMd()
 module.exports = doPrompt;
